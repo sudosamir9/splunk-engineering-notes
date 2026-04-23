@@ -10,19 +10,19 @@
 
 | # | File | Topic | Status |
 |---|------|--------|--------|
-| 1 | [01-architecture-overview.md](01-architecture-overview.md) | Big Picture — Components & Mental Model | ✅ Done |
-| 2a | [02a-universal-forwarder.md](02a-universal-forwarder.md) | Universal Forwarder — Deep Dive | 🔜 Next |
-| 2b | [02b-heavy-forwarder.md](02b-heavy-forwarder.md) | Heavy Forwarder — Deep Dive | 🔜 |
-| 2c | [02c-indexer-cluster.md](02c-indexer-cluster.md) | Indexer & Indexer Cluster — Deep Dive | 🔜 |
-| 2d | [02d-search-head-cluster.md](02d-search-head-cluster.md) | Search Head Cluster — Deep Dive | 🔜 |
-| 2e | [02e-deployment-server.md](02e-deployment-server.md) | Deployment Server — Deep Dive | 🔜 |
-| 2f | [02f-license-manager.md](02f-license-manager.md) | License Manager & Monitoring Console | 🔜 |
-| 3 | [03-data-journey.md](03-data-journey.md) | Log Flow: Endpoint → UI (full trace) | 🔜 |
-| 4 | [04-resource-planning.md](04-resource-planning.md) | Sizing, Hardware, Network, HA | 🔜 |
-| 5 | [05-deployment-configuration.md](05-deployment-configuration.md) | Install Order, Config Files, Hierarchy | 🔜 |
-| 6 | [06-cli-management.md](06-cli-management.md) | CLI Reference & Day-2 Operations | 🔜 |
-| 7 | [07-security-hardening.md](07-security-hardening.md) | TLS, RBAC, Audit Logging, Hardening | 🔜 |
-| 8 | [08-ui-and-detection.md](08-ui-and-detection.md) | UI, ES App, CIM, UEBA, Correlation Rules | 🔜 |
+| 01 | [01-architecture-overview.md](01-architecture-overview.md) | Distributed Architecture — Big Picture | ✅ Done |
+| 02a | [02a-universal-forwarder.md](02a-universal-forwarder.md) | Universal Forwarder (UF) | 🔜 Next |
+| 02b | [02b-heavy-forwarder.md](02b-heavy-forwarder.md) | Heavy Forwarder (HF) | 🔜 |
+| 02c | [02c-indexer-cluster.md](02c-indexer-cluster.md) | Indexer & Indexer Cluster | 🔜 |
+| 02d | [02d-search-head-cluster.md](02d-search-head-cluster.md) | Search Head Cluster (SHC) | 🔜 |
+| 02e | [02e-deployment-server.md](02e-deployment-server.md) | Deployment Server (DS) | 🔜 |
+| 02f | [02f-license-manager.md](02f-license-manager.md) | License Manager & Monitoring Console | 🔜 |
+| 03 | [03-data-journey.md](03-data-journey.md) | Log Journey — Endpoint to Analyst UI | 🔜 |
+| 04 | [04-resource-planning.md](04-resource-planning.md) | Resource Planning & Hardware Sizing | 🔜 |
+| 05 | [05-deployment-configuration.md](05-deployment-configuration.md) | Deployment, Install Order & Config | 🔜 |
+| 06 | [06-cli-management.md](06-cli-management.md) | CLI Reference & Day-2 Operations | 🔜 |
+| 07 | [07-security-hardening.md](07-security-hardening.md) | Security Hardening & RBAC | 🔜 |
+| 08 | [08-ui-and-detection.md](08-ui-and-detection.md) | ES App, CIM, Detection & UEBA | 🔜 |
 
 ---
 
