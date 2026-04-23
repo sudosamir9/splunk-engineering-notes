@@ -1,0 +1,66 @@
+# Splunk Engineering — Study Notes
+
+> **Role:** Security Engineer (build/deploy/maintain → detection → UEBA)
+> **Scope:** Enterprise on-premises distributed deployment
+> **Goal:** Deploy for org + Splunk Core Admin/Architect cert + SOC detection
+
+---
+
+## Modules
+
+| # | File | Topic | Status |
+|---|------|--------|--------|
+| 1 | [01-architecture-overview.md](01-architecture-overview.md) | Big Picture — Components & Mental Model | ✅ Done |
+| 2a | [02a-universal-forwarder.md](02a-universal-forwarder.md) | Universal Forwarder — Deep Dive | 🔜 Next |
+| 2b | [02b-heavy-forwarder.md](02b-heavy-forwarder.md) | Heavy Forwarder — Deep Dive | 🔜 |
+| 2c | [02c-indexer-cluster.md](02c-indexer-cluster.md) | Indexer & Indexer Cluster — Deep Dive | 🔜 |
+| 2d | [02d-search-head-cluster.md](02d-search-head-cluster.md) | Search Head Cluster — Deep Dive | 🔜 |
+| 2e | [02e-deployment-server.md](02e-deployment-server.md) | Deployment Server — Deep Dive | 🔜 |
+| 2f | [02f-license-manager.md](02f-license-manager.md) | License Manager & Monitoring Console | 🔜 |
+| 3 | [03-data-journey.md](03-data-journey.md) | Log Flow: Endpoint → UI (full trace) | 🔜 |
+| 4 | [04-resource-planning.md](04-resource-planning.md) | Sizing, Hardware, Network, HA | 🔜 |
+| 5 | [05-deployment-configuration.md](05-deployment-configuration.md) | Install Order, Config Files, Hierarchy | 🔜 |
+| 6 | [06-cli-management.md](06-cli-management.md) | CLI Reference & Day-2 Operations | 🔜 |
+| 7 | [07-security-hardening.md](07-security-hardening.md) | TLS, RBAC, Audit Logging, Hardening | 🔜 |
+| 8 | [08-ui-and-detection.md](08-ui-and-detection.md) | UI, ES App, CIM, UEBA, Correlation Rules | 🔜 |
+
+---
+
+## Quick Reference — Ports
+
+| Port | Protocol | Used For |
+|------|----------|----------|
+| `9997` | TCP | Forwarder → Indexer (data ingestion) |
+| `8089` | HTTPS | Splunk management API (all components) |
+| `8000` | HTTP/S | Search Head web UI |
+| `8191` | TCP | KV Store (Search Head Cluster) |
+| `9887` | TCP | Indexer Cluster replication |
+| `8080` | TCP | Indexer Cluster replication (alternate) |
+| `514` | UDP/TCP | Syslog → Heavy Forwarder |
+
+---
+
+## Quick Reference — Key Config Files
+
+| File | Lives On | Controls |
+|------|----------|----------|
+| `inputs.conf` | Forwarder, Indexer | What data to collect / receive |
+| `outputs.conf` | Forwarder | Where to send data |
+| `server.conf` | All | Clustering, replication, identity |
+| `props.conf` | HF, Indexer | Parsing rules, sourcetype transforms |
+| `transforms.conf` | HF, Indexer | Routing, field extraction, lookup |
+| `indexes.conf` | Indexer | Index definitions, storage paths, retention |
+| `serverclass.conf` | Deployment Server | Which apps go to which forwarder groups |
+| `authorize.conf` | Search Head | RBAC roles and capabilities |
+
+---
+
+## Config File Hierarchy (precedence — bottom overrides top)
+
+```
+$SPLUNK_HOME/etc/system/default/     ← Splunk's shipped defaults (never edit)
+$SPLUNK_HOME/etc/system/local/       ← Your system-wide overrides
+$SPLUNK_HOME/etc/apps/<app>/default/ ← App-bundled defaults
+$SPLUNK_HOME/etc/apps/<app>/local/   ← App local overrides (highest app priority)
+$SPLUNK_HOME/etc/users/<user>/       ← Per-user knowledge objects
+```

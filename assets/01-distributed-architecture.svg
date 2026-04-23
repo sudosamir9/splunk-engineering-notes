@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1300" height="780" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Arial, sans-serif">
+
+  <defs>
+    <marker id="arr-blue"   markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#2563eb"/></marker>
+    <marker id="arr-amber"  markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#d97706"/></marker>
+    <marker id="arr-red"    markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#dc2626"/></marker>
+    <marker id="arr-green"  markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#16a34a"/></marker>
+    <marker id="arr-slate"  markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#475569"/></marker>
+    <marker id="arr-purple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#7c3aed"/></marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="#00000022"/>
+    </filter>
+  </defs>
+
+  <!-- ═══ BACKGROUND ═══ -->
+  <rect width="1300" height="780" fill="#f8fafc"/>
+
+  <!-- ═══ HEADER ═══ -->
+  <rect x="0" y="0" width="1300" height="54" fill="#0f172a"/>
+  <text x="650" y="23" text-anchor="middle" font-size="17" font-weight="bold" fill="#f1f5f9">Splunk Distributed Architecture — Enterprise On-Premises</text>
+  <text x="650" y="42" text-anchor="middle" font-size="10" fill="#64748b">Based on Splunk Validated Architecture (SVA) · C1/C11 Single-Site Clustered Deployment · Splunk Enterprise 9.4.x</text>
+
+  <!-- ═══════════════════════════════════════════════
+       TIER BACKGROUND LANES (Data Flow)
+  ═══════════════════════════════════════════════════ -->
+
+  <!-- Endpoints lane -->
+  <rect x="12"  y="62" width="168" height="520" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5" rx="8" filter="url(#shadow)"/>
+  <rect x="12"  y="62" width="168" height="26"  fill="#2563eb" rx="8"/>
+  <rect x="12"  y="80"  width="168" height="8"   fill="#2563eb"/>
+  <text x="96"  y="80"  text-anchor="middle" font-size="11" font-weight="bold" fill="white">ENDPOINTS</text>
+
+  <!-- Collection lane -->
+  <rect x="196" y="62" width="188" height="520" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5" rx="8" filter="url(#shadow)"/>
+  <rect x="196" y="62" width="188" height="26"  fill="#b45309" rx="8"/>
+  <rect x="196" y="80"  width="188" height="8"   fill="#b45309"/>
+  <text x="290" y="80"  text-anchor="middle" font-size="11" font-weight="bold" fill="white">COLLECTION TIER</text>
+
+  <!-- Indexing lane -->
+  <rect x="400" y="62" width="196" height="520" fill="#fff1f2" stroke="#f43f5e" stroke-width="1.5" rx="8" filter="url(#shadow)"/>
+  <rect x="400" y="62" width="196" height="26"  fill="#be123c" rx="8"/>
+  <rect x="400" y="80"  width="196" height="8"   fill="#be123c"/>
+  <text x="498" y="80"  text-anchor="middle" font-size="11" font-weight="bold" fill="white">INDEXING TIER</text>
+
+  <!-- Search lane -->
+  <rect x="612" y="62" width="188" height="520" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.5" rx="8" filter="url(#shadow)"/>
+  <rect x="612" y="62" width="188" height="26"  fill="#15803d" rx="8"/>
+  <rect x="612" y="80"  width="188" height="8"   fill="#15803d"/>
+  <text x="706" y="80"  text-anchor="middle" font-size="11" font-weight="bold" fill="white">SEARCH TIER</text>
+
+  <!-- Management lane -->
+  <rect x="816" y="62" width="468" height="520" fill="#f1f5f9" stroke="#475569" stroke-width="1.5" rx="8" filter="url(#shadow)"/>
+  <rect x="816" y="62" width="468" height="26"  fill="#1e293b" rx="8"/>
+  <rect x="816" y="80"  width="468" height="8"   fill="#1e293b"/>
+  <text x="1050" y="80"  text-anchor="middle" font-size="11" font-weight="bold" fill="white">MANAGEMENT PLANE</text>
+
+  <!-- ═══════════════════════════════════════════════
+       ENDPOINT COMPONENT BOXES
+  ═══════════════════════════════════════════════════ -->
+
+  <!-- Windows DC -->
+  <rect x="20"  y="96"  width="152" height="64" fill="white" stroke="#3b82f6" stroke-width="1.5" rx="5"/>
+  <text x="96"  y="113" text-anchor="middle" font-size="10" font-weight="bold" fill="#1d4ed8">Windows DC</text>
+  <text x="96"  y="129" text-anchor="middle" font-size="9"  fill="#374151">● UF Agent installed</text>
+  <text x="96"  y="145" text-anchor="middle" font-size="8"  fill="#6b7280">WinEvtLog · Sysmon · Security</text>
+  <text x="96"  y="157" text-anchor="middle" font-size="8"  fill="#6b7280">Active Directory logs</text>
+
+  <!-- Windows Server -->
+  <rect x="20"  y="170" width="152" height="64" fill="white" stroke="#3b82f6" stroke-width="1.5" rx="5"/>
+  <text x="96"  y="187" text-anchor="middle" font-size="10" font-weight="bold" fill="#1d4ed8">Windows Server</text>
+  <text x="96"  y="203" text-anchor="middle" font-size="9"  fill="#374151">● UF Agent installed</text>
+  <text x="96"  y="219" text-anchor="middle" font-size="8"  fill="#6b7280">IIS · App logs · PowerShell</text>
+  <text x="96"  y="231" text-anchor="middle" font-size="8"  fill="#6b7280">WinEvtLog · Scheduled tasks</text>
+
+  <!-- Linux Host -->
+  <rect x="20"  y="244" width="152" height="64" fill="white" stroke="#3b82f6" stroke-width="1.5" rx="5"/>
+  <text x="96"  y="261" text-anchor="middle" font-size="10" font-weight="bold" fill="#1d4ed8">Linux / App Host</text>
+  <text x="96"  y="277" text-anchor="middle" font-size="9"  fill="#374151">● UF Agent installed</text>
+  <text x="96"  y="293" text-anchor="middle" font-size="8"  fill="#6b7280">syslog · auth.log · cron</text>
+  <text x="96"  y="305" text-anchor="middle" font-size="8"  fill="#6b7280">app logs · /var/log/*</text>
+
+  <!-- SQL Server -->
+  <rect x="20"  y="318" width="152" height="64" fill="white" stroke="#3b82f6" stroke-width="1.5" rx="5"/>
+  <text x="96"  y="335" text-anchor="middle" font-size="10" font-weight="bold" fill="#1d4ed8">SQL / App Server</text>
+  <text x="96"  y="351" text-anchor="middle" font-size="9"  fill="#374151">● UF Agent installed</text>
+  <text x="96"  y="367" text-anchor="middle" font-size="8"  fill="#6b7280">DB audit · error logs</text>
+  <text x="96"  y="379" text-anchor="middle" font-size="8"  fill="#6b7280">Custom app log paths</text>
+
+  <!-- Firewall / NGFW (no UF - dashed red border) -->
+  <rect x="20"  y="396" width="152" height="64" fill="#fff5f5" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="6,3" rx="5"/>
+  <text x="96"  y="413" text-anchor="middle" font-size="10" font-weight="bold" fill="#dc2626">Firewall / NGFW</text>
+  <text x="96"  y="429" text-anchor="middle" font-size="9"  fill="#dc2626">✗ No UF support</text>
+  <text x="96"  y="445" text-anchor="middle" font-size="8"  fill="#6b7280">Sends syslog UDP/TCP :514</text>
+  <text x="96"  y="457" text-anchor="middle" font-size="8"  fill="#6b7280">Palo Alto · Cisco ASA · FortiGate</text>
+
+  <!-- Switch / Router (no UF - dashed red border) -->
+  <rect x="20"  y="470" width="152" height="64" fill="#fff5f5" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="6,3" rx="5"/>
+  <text x="96"  y="487" text-anchor="middle" font-size="10" font-weight="bold" fill="#dc2626">Switch / Router</text>
+  <text x="96"  y="503" text-anchor="middle" font-size="9"  fill="#dc2626">✗ No UF support</text>
+  <text x="96"  y="519" text-anchor="middle" font-size="8"  fill="#6b7280">Sends syslog UDP :514</text>
+  <text x="96"  y="531" text-anchor="middle" font-size="8"  fill="#6b7280">Cisco · Juniper · Arista</text>
+
+  <!-- ═══════════════════════════════════════════════
+       COLLECTION TIER BOXES
+  ═══════════════════════════════════════════════════ -->
+
+  <!-- Universal Forwarder -->
+  <rect x="204" y="96"  width="172" height="156" fill="white" stroke="#f59e0b" stroke-width="2" rx="6"/>
+  <rect x="204" y="96"  width="172" height="22"  fill="#d97706" rx="6"/>
+  <rect x="204" y="110" width="172" height="8"   fill="#d97706"/>
+  <text x="290" y="112" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Universal Forwarder</text>
+  <text x="290" y="133" text-anchor="middle" font-size="9"  fill="#374151">Runs ON the endpoint host</text>
+  <text x="290" y="151" text-anchor="middle" font-size="9"  fill="#374151">✓  Monitor files / WinEvtLog</text>
+  <text x="290" y="167" text-anchor="middle" font-size="9"  fill="#374151">✓  Compress + TLS encrypt</text>
+  <text x="290" y="183" text-anchor="middle" font-size="9"  fill="#374151">✓  Load balance to indexers</text>
+  <text x="290" y="199" text-anchor="middle" font-size="9"  fill="#dc2626">✗  No parsing · No routing</text>
+  <text x="290" y="218" text-anchor="middle" font-size="8"  fill="#9ca3af">~50-100 MB RAM · negligible CPU</text>
+  <text x="290" y="232" text-anchor="middle" font-size="8"  fill="#9ca3af">Managed via Deployment Server</text>
+
+  <!-- Heavy Forwarder -->
+  <rect x="204" y="266" width="172" height="188" fill="white" stroke="#f59e0b" stroke-width="2" rx="6"/>
+  <rect x="204" y="266" width="172" height="22"  fill="#92400e" rx="6"/>
+  <rect x="204" y="280" width="172" height="8"   fill="#92400e"/>
+  <text x="290" y="282" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Heavy Forwarder</text>
+  <text x="290" y="303" text-anchor="middle" font-size="9"  fill="#374151">Dedicated box · full Splunk binary</text>
+  <text x="290" y="321" text-anchor="middle" font-size="9"  fill="#374151">✓  Receive syslog :514</text>
+  <text x="290" y="337" text-anchor="middle" font-size="9"  fill="#374151">✓  Parse CEF / LEEF / CIM</text>
+  <text x="290" y="353" text-anchor="middle" font-size="9"  fill="#374151">✓  Route events to indexes</text>
+  <text x="290" y="369" text-anchor="middle" font-size="9"  fill="#374151">✓  Pull from REST APIs</text>
+  <text x="290" y="385" text-anchor="middle" font-size="9"  fill="#374151">✓  Filter / transform events</text>
+  <text x="290" y="415" text-anchor="middle" font-size="8"  fill="#9ca3af">4-8 cores · 8-16 GB RAM</text>
+  <text x="290" y="429" text-anchor="middle" font-size="8"  fill="#9ca3af">props.conf · transforms.conf</text>
+  <text x="290" y="443" text-anchor="middle" font-size="8"  fill="#9ca3af">O365 · AWS CloudTrail · REST APIs</text>
+
+  <!-- ═══════════════════════════════════════════════
+       INDEXING TIER BOXES
+  ═══════════════════════════════════════════════════ -->
+
+  <!-- Indexer 1 -->
+  <rect x="408" y="96"  width="180" height="96"  fill="white" stroke="#f43f5e" stroke-width="1.5" rx="5"/>
+  <rect x="408" y="96"  width="180" height="20"  fill="#be123c" rx="5"/>
+  <rect x="408" y="108" width="180" height="8"   fill="#be123c"/>
+  <text x="498" y="110" text-anchor="middle" font-size="10" font-weight="bold" fill="white">Indexer Peer 1</text>
+  <text x="498" y="131" text-anchor="middle" font-size="9"  fill="#374151">Receive · Parse · Write buckets</text>
+  <text x="498" y="147" text-anchor="middle" font-size="9"  fill="#374151">Replicate to Peers 2 &amp; 3</text>
+  <text x="498" y="163" text-anchor="middle" font-size="8"  fill="#9ca3af">12-16 cores · 32-64 GB · NVMe SSD</text>
+  <text x="498" y="179" text-anchor="middle" font-size="8"  fill="#9ca3af">hot → warm → cold → frozen</text>
+
+  <!-- Indexer 2 -->
+  <rect x="408" y="204" width="180" height="96"  fill="white" stroke="#f43f5e" stroke-width="1.5" rx="5"/>
+  <rect x="408" y="204" width="180" height="20"  fill="#be123c" rx="5"/>
+  <rect x="408" y="216" width="180" height="8"   fill="#be123c"/>
+  <text x="498" y="218" text-anchor="middle" font-size="10" font-weight="bold" fill="white">Indexer Peer 2</text>
+  <text x="498" y="239" text-anchor="middle" font-size="9"  fill="#374151">Receive · Parse · Write buckets</text>
+  <text x="498" y="255" text-anchor="middle" font-size="9"  fill="#374151">Replicate to Peers 1 &amp; 3</text>
+  <text x="498" y="271" text-anchor="middle" font-size="8"  fill="#9ca3af">12-16 cores · 32-64 GB · NVMe SSD</text>
+  <text x="498" y="287" text-anchor="middle" font-size="8"  fill="#9ca3af">hot → warm → cold → frozen</text>
+
+  <!-- Indexer 3 -->
+  <rect x="408" y="312" width="180" height="96"  fill="white" stroke="#f43f5e" stroke-width="1.5" rx="5"/>
+  <rect x="408" y="312" width="180" height="20"  fill="#be123c" rx="5"/>
+  <rect x="408" y="324" width="180" height="8"   fill="#be123c"/>
+  <text x="498" y="326" text-anchor="middle" font-size="10" font-weight="bold" fill="white">Indexer Peer 3</text>
+  <text x="498" y="347" text-anchor="middle" font-size="9"  fill="#374151">Receive · Parse · Write buckets</text>
+  <text x="498" y="363" text-anchor="middle" font-size="9"  fill="#374151">Replicate to Peers 1 &amp; 2</text>
+  <text x="498" y="379" text-anchor="middle" font-size="8"  fill="#9ca3af">12-16 cores · 32-64 GB · NVMe SSD</text>
+  <text x="498" y="395" text-anchor="middle" font-size="8"  fill="#9ca3af">hot → warm → cold → frozen</text>
+
+  <!-- Cluster info badge -->
+  <rect x="408" y="420" width="180" height="46"  fill="#fff1f2" stroke="#f43f5e" stroke-width="1" stroke-dasharray="4,2" rx="5"/>
+  <text x="498" y="439" text-anchor="middle" font-size="9" font-weight="bold" fill="#be123c">Indexer Cluster</text>
+  <text x="498" y="455" text-anchor="middle" font-size="8" fill="#be123c">RF=3 · SF=2 · TCP :9887 replication</text>
+
+  <!-- ═══════════════════════════════════════════════
+       SEARCH TIER BOXES
+  ═══════════════════════════════════════════════════ -->
+
+  <!-- SH1 -->
+  <rect x="620" y="96"  width="172" height="96"  fill="white" stroke="#22c55e" stroke-width="1.5" rx="5"/>
+  <rect x="620" y="96"  width="172" height="20"  fill="#15803d" rx="5"/>
+  <rect x="620" y="108" width="172" height="8"   fill="#15803d"/>
+  <text x="706" y="110" text-anchor="middle" font-size="10" font-weight="bold" fill="white">Search Head 1</text>
+  <text x="706" y="131" text-anchor="middle" font-size="9"  fill="#374151">Dispatch · Merge · Render</text>
+  <text x="706" y="147" text-anchor="middle" font-size="9"  fill="#374151">Queries all indexers in parallel</text>
+  <text x="706" y="163" text-anchor="middle" font-size="8"  fill="#9ca3af">8-16 cores · 16-32 GB RAM</text>
+  <text x="706" y="179" text-anchor="middle" font-size="8"  fill="#9ca3af">No event data stored locally</text>
+
+  <!-- SH2 -->
+  <rect x="620" y="204" width="172" height="96"  fill="white" stroke="#22c55e" stroke-width="1.5" rx="5"/>
+  <rect x="620" y="204" width="172" height="20"  fill="#15803d" rx="5"/>
+  <rect x="620" y="216" width="172" height="8"   fill="#15803d"/>
+  <text x="706" y="218" text-anchor="middle" font-size="10" font-weight="bold" fill="white">Search Head 2</text>
+  <text x="706" y="239" text-anchor="middle" font-size="9"  fill="#374151">Dispatch · Merge · Render</text>
+  <text x="706" y="255" text-anchor="middle" font-size="9"  fill="#374151">Queries all indexers in parallel</text>
+  <text x="706" y="271" text-anchor="middle" font-size="8"  fill="#9ca3af">8-16 cores · 16-32 GB RAM</text>
+  <text x="706" y="287" text-anchor="middle" font-size="8"  fill="#9ca3af">No event data stored locally</text>
+
+  <!-- SH3 (Captain) -->
+  <rect x="620" y="312" width="172" height="96"  fill="white" stroke="#22c55e" stroke-width="2" rx="5"/>
+  <rect x="620" y="312" width="172" height="20"  fill="#166534" rx="5"/>
+  <rect x="620" y="324" width="172" height="8"   fill="#166534"/>
+  <text x="706" y="326" text-anchor="middle" font-size="10" font-weight="bold" fill="white">Search Head 3 ★ Captain</text>
+  <text x="706" y="347" text-anchor="middle" font-size="9"  fill="#374151">Elected via Raft consensus</text>
+  <text x="706" y="363" text-anchor="middle" font-size="9"  fill="#374151">Coordinates knowledge objects</text>
+  <text x="706" y="379" text-anchor="middle" font-size="8"  fill="#9ca3af">KV Store repl · TCP :8191</text>
+  <text x="706" y="395" text-anchor="middle" font-size="8"  fill="#9ca3af">Dashboards · Lookups · Alerts</text>
+
+  <!-- SHC badge -->
+  <rect x="620" y="420" width="172" height="46"  fill="#f0fdf4" stroke="#22c55e" stroke-width="1" stroke-dasharray="4,2" rx="5"/>
+  <text x="706" y="439" text-anchor="middle" font-size="9" font-weight="bold" fill="#15803d">Search Head Cluster (SHC)</text>
+  <text x="706" y="455" text-anchor="middle" font-size="8" fill="#15803d">Min 3 members · Deployer manages apps</text>
+
+  <!-- SOC Analyst terminal -->
+  <rect x="620" y="480" width="172" height="72"  fill="#0f172a" stroke="#334155" stroke-width="1.5" rx="8"/>
+  <text x="706" y="506" text-anchor="middle" font-size="13" font-weight="bold" fill="#f1f5f9">SOC Analyst</text>
+  <text x="706" y="524" text-anchor="middle" font-size="9"  fill="#64748b">Browser → Search Head :8000</text>
+  <text x="706" y="540" text-anchor="middle" font-size="8"  fill="#475569">Splunk Web · Enterprise Security</text>
+
+  <!-- ═══════════════════════════════════════════════
+       MANAGEMENT PLANE BOXES
+  ═══════════════════════════════════════════════════ -->
+
+  <!-- Cluster Manager -->
+  <rect x="824" y="96"  width="452" height="104" fill="white" stroke="#475569" stroke-width="1.5" rx="5"/>
+  <rect x="824" y="96"  width="452" height="20"  fill="#334155" rx="5"/>
+  <rect x="824" y="108" width="452" height="8"   fill="#334155"/>
+  <text x="1050" y="110" text-anchor="middle" font-size="10" font-weight="bold" fill="white">Cluster Manager  (formerly: Master Node)</text>
+  <text x="1050" y="130" text-anchor="middle" font-size="9"  fill="#374151">Controls the indexer cluster · Does NOT index or store data</text>
+  <text x="1050" y="146" text-anchor="middle" font-size="9"  fill="#374151">Manages peer health · bucket replication · rolling restarts</text>
+  <text x="1050" y="162" text-anchor="middle" font-size="9"  fill="#374151">Tells Search Heads which indexer peers to query</text>
+  <text x="1050" y="183" text-anchor="middle" font-size="8"  fill="#9ca3af">⚠ If CM goes down: indexing + search CONTINUE uninterrupted · Co-located with License Manager</text>
+
+  <!-- Deployment Server -->
+  <rect x="824" y="212" width="452" height="104" fill="white" stroke="#475569" stroke-width="1.5" rx="5"/>
+  <rect x="824" y="212" width="452" height="20"  fill="#334155" rx="5"/>
+  <rect x="824" y="224" width="452" height="8"   fill="#334155"/>
+  <text x="1050" y="226" text-anchor="middle" font-size="10" font-weight="bold" fill="white">Deployment Server</text>
+  <text x="1050" y="246" text-anchor="middle" font-size="9"  fill="#374151">Config management for the entire forwarder fleet</text>
+  <text x="1050" y="262" text-anchor="middle" font-size="9"  fill="#374151">Server Classes → Deployment Apps · UFs phone home every 60 seconds</text>
+  <text x="1050" y="278" text-anchor="middle" font-size="9"  fill="#374151">Manages FORWARDERS ONLY — NOT indexers or search heads</text>
+  <text x="1050" y="299" text-anchor="middle" font-size="8"  fill="#9ca3af">CLI: splunk reload deploy-server · Config: serverclass.conf · Co-located with Cluster Manager</text>
+
+  <!-- License Manager -->
+  <rect x="824" y="328" width="452" height="104" fill="white" stroke="#475569" stroke-width="1.5" rx="5"/>
+  <rect x="824" y="328" width="452" height="20"  fill="#334155" rx="5"/>
+  <rect x="824" y="340" width="452" height="8"   fill="#334155"/>
+  <text x="1050" y="342" text-anchor="middle" font-size="10" font-weight="bold" fill="white">License Manager</text>
+  <text x="1050" y="362" text-anchor="middle" font-size="9"  fill="#374151">Tracks daily uncompressed GB indexed across all indexers</text>
+  <text x="1050" y="378" text-anchor="middle" font-size="9"  fill="#374151">Warns on daily limit breach · 5+ violations in 30 days → search blocked</text>
+  <text x="1050" y="394" text-anchor="middle" font-size="9"  fill="#374151">Data is NEVER dropped on violation · Indexing always continues</text>
+  <text x="1050" y="415" text-anchor="middle" font-size="8"  fill="#9ca3af">License types: Enterprise · Dev/Test · Free · Trial · Co-located with Cluster Manager</text>
+
+  <!-- Monitoring Console -->
+  <rect x="824" y="444" width="452" height="104" fill="white" stroke="#475569" stroke-width="1.5" rx="5"/>
+  <rect x="824" y="444" width="452" height="20"  fill="#334155" rx="5"/>
+  <rect x="824" y="456" width="452" height="8"   fill="#334155"/>
+  <text x="1050" y="458" text-anchor="middle" font-size="10" font-weight="bold" fill="white">Monitoring Console (MC)</text>
+  <text x="1050" y="478" text-anchor="middle" font-size="9"  fill="#374151">Single pane of glass for deployment health</text>
+  <text x="1050" y="494" text-anchor="middle" font-size="9"  fill="#374151">Indexing throughput · disk usage per indexer · search concurrency</text>
+  <text x="1050" y="510" text-anchor="middle" font-size="9"  fill="#374151">Forwarder connectivity status · license usage · scheduler activity</text>
+  <text x="1050" y="531" text-anchor="middle" font-size="8"  fill="#9ca3af">Dedicated Splunk instance · Essential for SOC infrastructure health monitoring</text>
+
+  <!-- ═══════════════════════════════════════════════
+       ARROWS — DATA FLOW
+  ═══════════════════════════════════════════════════ -->
+
+  <!-- Endpoints → UF (blue endpoint arrows into UF box) -->
+  <line x1="172" y1="128" x2="204" y2="148" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arr-blue)"/>
+  <line x1="172" y1="202" x2="204" y2="165" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arr-blue)"/>
+  <line x1="172" y1="276" x2="204" y2="182" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arr-blue)"/>
+  <line x1="172" y1="350" x2="204" y2="200" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arr-blue)"/>
+
+  <!-- Firewall/Switch → HF (syslog - red dashed) -->
+  <path d="M 172 428 C 188 428 188 360 204 340" stroke="#dc2626" stroke-width="1.5" fill="none" stroke-dasharray="6,3" marker-end="url(#arr-red)"/>
+  <path d="M 172 502 C 192 502 192 400 204 380" stroke="#dc2626" stroke-width="1.5" fill="none" stroke-dasharray="6,3" marker-end="url(#arr-red)"/>
+  <text x="186" y="462" font-size="8" fill="#dc2626" text-anchor="middle" transform="rotate(-70 186 462)">syslog :514</text>
+
+  <!-- UF → Indexers (amber, TCP 9997) -->
+  <line x1="376" y1="150" x2="408" y2="144" stroke="#d97706" stroke-width="2.5" marker-end="url(#arr-amber)"/>
+  <line x1="376" y1="168" x2="408" y2="252" stroke="#d97706" stroke-width="2.5" marker-end="url(#arr-amber)"/>
+  <line x1="376" y1="185" x2="408" y2="360" stroke="#d97706" stroke-width="2.5" marker-end="url(#arr-amber)"/>
+
+  <!-- HF → Indexers (amber, TCP 9997) -->
+  <line x1="376" y1="336" x2="408" y2="155" stroke="#d97706" stroke-width="2.5" marker-end="url(#arr-amber)"/>
+  <line x1="376" y1="355" x2="408" y2="260" stroke="#d97706" stroke-width="2.5" marker-end="url(#arr-amber)"/>
+  <line x1="376" y1="374" x2="408" y2="365" stroke="#d97706" stroke-width="2.5" marker-end="url(#arr-amber)"/>
+
+  <!-- TCP 9997 label -->
+  <rect x="383" y="220" width="56" height="28" fill="white" stroke="#d97706" stroke-width="1" rx="3"/>
+  <text x="411" y="232" text-anchor="middle" font-size="8" font-weight="bold" fill="#d97706">TCP</text>
+  <text x="411" y="243" text-anchor="middle" font-size="8" font-weight="bold" fill="#d97706">:9997</text>
+
+  <!-- Indexers ↔ Search Heads (green, port 8089) -->
+  <line x1="588" y1="144" x2="620" y2="144" stroke="#16a34a" stroke-width="2.5" marker-end="url(#arr-green)"/>
+  <line x1="588" y1="252" x2="620" y2="252" stroke="#16a34a" stroke-width="2.5" marker-end="url(#arr-green)"/>
+  <line x1="588" y1="360" x2="620" y2="360" stroke="#16a34a" stroke-width="2.5" marker-end="url(#arr-green)"/>
+
+  <!-- port 8089 label -->
+  <rect x="596" y="244" width="56" height="16" fill="white" stroke="#16a34a" stroke-width="1" rx="3"/>
+  <text x="624" y="255" text-anchor="middle" font-size="8" font-weight="bold" fill="#15803d">:8089</text>
+
+  <!-- SHC → Analyst (dark) -->
+  <line x1="706" y1="478" x2="706" y2="480" stroke="#0f172a" stroke-width="2" marker-end="url(#arr-slate)"/>
+
+  <!-- ═══════════════════════════════════════════════
+       ARROWS — MANAGEMENT PLANE (dashed slate)
+  ═══════════════════════════════════════════════════ -->
+
+  <!-- Cluster Manager → Indexers -->
+  <path d="M 824 148 L 688 148 L 688 252 L 588 252" stroke="#475569" stroke-width="1.5" fill="none" stroke-dasharray="6,3" marker-end="url(#arr-slate)"/>
+  <text x="740" y="140" font-size="8" fill="#475569" text-anchor="middle">controls :8089</text>
+
+  <!-- Deployment Server → UF -->
+  <path d="M 824 264 L 668 264 L 430 264 L 376 215" stroke="#475569" stroke-width="1.5" fill="none" stroke-dasharray="6,3" marker-end="url(#arr-slate)"/>
+  <text x="610" y="258" font-size="8" fill="#475569" text-anchor="middle">push configs :8089</text>
+
+  <!-- License Manager → Indexers -->
+  <path d="M 824 380 L 760 380 L 760 300 L 588 300" stroke="#475569" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#arr-slate)"/>
+  <text x="720" y="374" font-size="8" fill="#475569" text-anchor="middle">tracks GB/day</text>
+
+  <!-- ═══════════════════════════════════════════════
+       LEGEND
+  ═══════════════════════════════════════════════════ -->
+  <rect x="10" y="600" width="1280" height="72" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" rx="6"/>
+
+  <text x="22" y="618" font-size="10" font-weight="bold" fill="#1e293b">LEGEND</text>
+
+  <!-- Data flow -->
+  <line x1="78" y1="615" x2="112" y2="615" stroke="#d97706" stroke-width="2.5"/>
+  <polygon points="112,612 120,615 112,618" fill="#d97706"/>
+  <text x="124" y="619" font-size="9" fill="#374151">Data flow  TCP :9997</text>
+
+  <!-- Syslog -->
+  <line x1="260" y1="615" x2="294" y2="615" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <polygon points="294,612 302,615 294,618" fill="#dc2626"/>
+  <text x="306" y="619" font-size="9" fill="#374151">Syslog / API  UDP/TCP :514</text>
+
+  <!-- Search -->
+  <line x1="468" y1="615" x2="502" y2="615" stroke="#16a34a" stroke-width="2.5"/>
+  <polygon points="502,612 510,615 502,618" fill="#16a34a"/>
+  <text x="514" y="619" font-size="9" fill="#374151">Search dispatch / results  :8089</text>
+
+  <!-- Management -->
+  <line x1="700" y1="615" x2="734" y2="615" stroke="#475569" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <polygon points="734,612 742,615 734,618" fill="#475569"/>
+  <text x="746" y="619" font-size="9" fill="#374151">Management / control  :8089</text>
+
+  <!-- Endpoint / no-UF -->
+  <rect x="940" y="607" width="10" height="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="954" y="618" font-size="9" fill="#374151">Endpoint + UF</text>
+  <rect x="1040" y="607" width="10" height="10" fill="#fff5f5" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <text x="1054" y="618" font-size="9" fill="#374151">Network device (no UF)</text>
+
+  <!-- Row 2 -->
+  <text x="22" y="644" font-size="8.5" fill="#374151">
+    <tspan font-weight="bold">Tiers: </tspan>🔵 Endpoints  ·  🟡 Collection  ·  🔴 Indexing  ·  🟢 Search  ·  ⚫ Management Plane
+  </text>
+  <text x="22" y="660" font-size="8" fill="#9ca3af">Source: Splunk Validated Architectures (SVA) · C1/C11 Single-Site Clustered Deployment · docs.splunk.com/SVA · Splunk Enterprise 9.4.x</text>
+  <text x="22" y="672" font-size="8" fill="#9ca3af">Ref: Types of distributed deployments — docs.splunk.com/Documentation/Splunk/9.4.2/Deploy/Distributedoverview</text>
+
+</svg>
